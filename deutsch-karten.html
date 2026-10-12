@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch Karten – Corporate &amp; Automotive German</title>
+<style>
+/* =====================================================================
+   THEME  (Audi-like: black / grey / white + red accent #BB0A30)
+   ===================================================================== */
+:root{
+  --accent:#BB0A30; --accent-h:#d40c36;
+  --radius:16px;
+  --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#0e0e10; --surface:#1a1a1d; --surface2:#242428; --line:#34343a;
+  --text:#f2f2f3; --muted:#9b9ba5; --shadow:0 10px 30px rgba(0,0,0,.45);
+  --der:#5b9bff; --die:#ff5c75; --das:#3fcf86;
+  --ok:#3fcf86; --bad:#ff5c75; --mark:rgba(187,10,48,.35);
+}
+html[data-theme="light"]{
+  --bg:#f1f1f3; --surface:#ffffff; --surface2:#f5f5f7; --line:#dcdce1;
+  --text:#17171a; --muted:#6b6b75; --shadow:0 10px 30px rgba(0,0,0,.10);
+  --der:#1f5fd1; --die:#c8102e; --das:#12894a;
+  --ok:#12894a; --bad:#c8102e; --mark:rgba(187,10,48,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.45;min-height:100vh}
+button,input,select{font:inherit;color:inherit}
+h2{margin:0 0 .6rem;font-size:1.15rem}
+h3{margin:0 0 .5rem;font-size:1rem}
+small,.muted{color:var(--muted)}
+.hidden{display:none!important}
+
+/* ---------- top bar ---------- */
+.topbar{background:#0a0a0a;color:#fff;display:flex;align-items:center;gap:.75rem;padding:.55rem 1rem;position:sticky;top:0;z-index:20;border-bottom:3px solid var(--accent);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.6rem;margin-right:auto}
+.brand .bar{width:6px;height:34px;background:var(--accent);border-radius:2px}
+.brand b{display:block;letter-spacing:.04em;text-transform:uppercase;font-size:.95rem}
+.brand small{color:#a8a8b0;font-size:.72rem}
+#nav{display:flex;gap:.25rem}
+#nav button{background:transparent;border:0;color:#cfcfd6;padding:.5rem .8rem;border-radius:8px;cursor:pointer;font-weight:600}
+#nav button:hover{background:#222}
+#nav button.active{background:var(--accent);color:#fff}
+.icon-btn{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:.35rem .6rem;cursor:pointer;line-height:1}
+.topbar .icon-btn{background:#1d1d20;border-color:#333;color:#fff}
+.icon-btn:hover{border-color:var(--accent)}
+
+main{max-width:980px;margin:0 auto;padding:1rem}
+.view{display:none}.view.active{display:block}
+#banner .warn{background:#5b4300;color:#ffe9a8;padding:.6rem 1rem;text-align:center;font-size:.9rem}
+
+/* ---------- generic components ---------- */
+.card-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.1rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+.btn{background:var(--surface2);border:1px solid var(--line);padding:.55rem 1rem;border-radius:10px;cursor:pointer;font-weight:600}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-h)}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.big{padding:.8rem 1.6rem;font-size:1.05rem}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;max-height:170px;overflow:auto}
+.chip{display:inline-flex;align-items:center;gap:.35rem;background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;font-size:.85rem;cursor:pointer;user-select:none}
+.chip input{accent-color:var(--accent)}
+.tag{display:inline-block;background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:.05rem .6rem;font-size:.78rem;margin:0 .25rem .25rem 0;color:var(--muted)}
+.badge{display:inline-block;border-radius:6px;padding:.1rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;background:var(--surface2);border:1px solid var(--line);color:var(--muted)}
+.badge.type{background:var(--accent);border-color:var(--accent);color:#fff}
+input[type=number],input[type=text],input[type=search],select{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem;width:100%}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+input[type=range]{accent-color:var(--accent);width:100%}
+label.field{display:block;font-size:.85rem;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+.dropzone{border:2px dashed var(--line);border-radius:var(--radius);padding:1rem;text-align:center;background:var(--surface2)}
+.dropzone.drag{border-color:var(--accent)}
+.result{margin-top:.7rem;padding:.6rem .8rem;border-radius:10px;font-size:.92rem;background:var(--surface2);border-left:4px solid var(--ok)}
+.result.err{border-left-color:var(--bad)}
+.result details{margin-top:.3rem}
+.result ul{margin:.3rem 0 0;padding-left:1.2rem;max-height:160px;overflow:auto}
+
+.modes{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.5rem}
+.mode{border:1px solid var(--line);background:var(--surface2);border-radius:12px;padding:.55rem .7rem;cursor:pointer;display:flex;gap:.5rem;align-items:flex-start}
+.mode input{accent-color:var(--accent);margin-top:.25rem}
+.mode.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.mode.dis{opacity:.4;cursor:not-allowed}
+.mode b{display:block;font-size:.92rem}.mode small{font-size:.75rem}
+
+/* ---------- article colours ---------- */
+.art{font-weight:700}
+.art-der{color:var(--der)}.art-die{color:var(--die)}.art-das{color:var(--das)}
+
+/* ---------- session ---------- */
+.sess-top{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem}
+.progress{flex:1;height:10px;background:var(--surface2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.progress>div{height:100%;background:var(--accent);width:0;transition:width .3s}
+.scene{perspective:1500px}
+.scene.enter{animation:fadein .25s}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card3d{display:grid;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.card3d.flipped{transform:rotateY(180deg)}
+.card3d.noanim{transition:none!important}
+.face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.2rem 1.3rem;min-height:310px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.face.back{transform:rotateY(180deg)}
+.card3d:not(.flipped) .back{pointer-events:none}
+.card3d.flipped .front{pointer-events:none}
+.face .meta{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem}
+.face .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.8rem;padding:.5rem 0}
+.prompt-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.prompt{font-size:clamp(1.9rem,6vw,3rem);font-weight:700;line-height:1.2;word-break:break-word}
+.prompt.sentence{font-size:clamp(1.3rem,3.8vw,1.9rem);font-weight:600}
+.blank{display:inline-block;min-width:5ch;border-bottom:3px solid var(--accent);color:transparent;user-select:none}
+.speak{font-size:1.1rem}
+.hint{color:var(--muted);font-size:.95rem}
+.type-row{display:flex;gap:.5rem;width:min(520px,100%)}
+.type-row input{font-size:1.2rem}
+.art-btns{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.art-btns button{min-width:92px;padding:.7rem 1.2rem;font-size:1.2rem;font-weight:700;border-radius:12px;border:2px solid currentColor;background:transparent;cursor:pointer}
+.art-btns .b-der{color:var(--der)}.art-btns .b-die{color:var(--die)}.art-btns .b-das{color:var(--das)}
+.art-btns button:hover{background:var(--surface2)}
+.art-btns button:disabled{opacity:.4;cursor:default}
+
+.back .ans-de{font-size:clamp(1.8rem,5.5vw,2.6rem);font-weight:700;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.back .ans-en{font-size:1.25rem}
+.back .ans-hu{font-size:1.1rem;color:var(--muted)}
+.back .ex{border-left:4px solid var(--accent);padding:.1rem .8rem;margin-top:.5rem;background:var(--surface2);border-radius:0 10px 10px 0}
+.back .ex-de{font-size:1.1rem}.back .ex-en{color:var(--muted);font-size:.95rem}
+.back .src{color:var(--muted);font-size:.72rem;margin-top:auto;padding-top:.6rem;opacity:.85}
+.back .body{display:flex;flex-direction:column;gap:.4rem;flex:1}
+.verdict{padding:.5rem .8rem;border-radius:10px;font-size:.95rem;background:var(--surface2);border-left:4px solid var(--ok)}
+.verdict.bad{border-left-color:var(--bad)}
+.diffline{font-family:ui-monospace,Consolas,monospace;font-size:1.05rem;word-break:break-all}
+.d-bad{background:var(--bad);color:#fff;border-radius:3px;padding:0 1px}
+.d-miss{background:var(--ok);color:#fff;border-radius:3px;padding:0 1px}
+mark.cloze,b.term{background:var(--mark);color:inherit;border-radius:4px;padding:0 .15rem}
+
+.actionbar{margin-top:1rem}
+.showbtn{width:100%;padding:.9rem;font-size:1.05rem}
+.rates{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.rate{border:0;border-radius:12px;padding:.7rem .3rem;cursor:pointer;color:#fff;font-weight:700;display:flex;flex-direction:column;gap:.15rem;align-items:center}
+.rate i{font-style:normal;font-weight:400;font-size:.7rem;opacity:.85}
+.rate.r1{background:#b3261e}.rate.r2{background:#8a5a00}.rate.r3{background:#2b7a3d}.rate.r4{background:#1d62b8}
+.rate:hover{filter:brightness(1.15)}
+.rate.suggest{box-shadow:0 0 0 3px var(--text)}
+.kbd-hint{text-align:center;color:var(--muted);font-size:.75rem;margin-top:.5rem}
+@media(max-width:520px){.rate{font-size:.82rem}.face{padding:1rem}}
+
+.summary{text-align:center}
+.summary .big{font-size:2.6rem;font-weight:800;color:var(--accent)}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.7rem;margin:.8rem 0}
+.stat{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:.7rem;text-align:center}
+.stat b{display:block;font-size:1.6rem}
+.stat span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.searchres{max-height:60vh;overflow:auto}
+.searchres tr{cursor:pointer}.searchres tr:hover{background:var(--surface2)}
+.pill{border-radius:999px;padding:.05rem .55rem;font-size:.72rem;font-weight:700;color:#fff}
+.pill.new{background:#5a5a66}.pill.learning{background:#8a5a00}.pill.mature{background:#2b7a3d}.pill.due{background:var(--accent)}
+
+/* ---------- modal / toast / drop overlay ---------- */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal .box{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem;max-width:560px;width:100%;max-height:90vh;overflow:auto}
+#toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%);background:#222;color:#fff;padding:.6rem 1rem;border-radius:10px;border-left:4px solid var(--accent);z-index:60;max-width:90vw;opacity:0;pointer-events:none;transition:opacity .25s}
+#toast.show{opacity:1}
+#dropOverlay{position:fixed;inset:0;background:rgba(187,10,48,.85);color:#fff;display:none;align-items:center;justify-content:center;font-size:1.8rem;font-weight:800;z-index:70}
+#dropOverlay.show{display:flex}
+svg text{fill:var(--muted);font-size:11px}
+svg .barv{fill:var(--text)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><div class="bar"></div><div><b>Deutsch Karten</b><small>Corporate &amp; Automotive German</small></div></div>
+  <nav id="nav">
+    <button data-view="study" class="active">Study</button>
+    <button data-view="browse">Search</button>
+    <button data-view="stats">Stats</button>
+    <button data-view="data">Data</button>
+  </nav>
+  <button id="themeBtn" class="icon-btn" title="Toggle light / dark mode" aria-label="Toggle light or dark mode">🌓</button>
+</header>
+<div id="banner"></div>
+
+<main>
+  <section id="view-study" class="view active"></section>
+  <section id="view-browse" class="view"></section>
+  <section id="view-stats" class="view"></section>
+  <section id="view-data" class="view"></section>
+</main>
+
+<input type="file" id="fileDeck" accept=".xlsx,.xlsm,.xls,.csv,.tsv,.txt" hidden>
+<input type="file" id="fileProgress" accept=".json,application/json" hidden>
+<div id="dropOverlay">Drop your .xlsx / .csv file here</div>
+<div id="toast" role="status"></div>
+<div id="modal" class="modal hidden"><div class="box" id="modalBox"></div></div>
+
+<!-- SheetJS (Excel parser). If it fails to load, CSV import remains available. -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+'use strict';
+/* =====================================================================
+   1. UTILITIES
+   ===================================================================== */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = n => String(n).padStart(2, '0');
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const uniqSorted = arr => Array.from(new Set(arr)).sort((a, b) => a.localeCompare(b, 'de'));
+
+/** Local date as YYYY-MM-DD (string compare works for ordering). */
+const todayStr = () => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
+const addDays = (str, n) => { const [y, m, d] = str.split('-').map(Number); const dt = new Date(y, m - 1, d + n); return `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}`; };
+const parseDate = str => { const [y, m, d] = str.split('-').map(Number); return new Date(y, m - 1, d); };
+
+function fmtInterval(days) {
+  if (days < 1) return '<1d';
+  if (days < 30) return Math.round(days) + 'd';
+  if (days < 365) return (days / 30).toFixed(1).replace(/\.0$/, '') + 'mo';
+  return (days / 365).toFixed(1).replace(/\.0$/, '') + 'y';
+}
+function download(filename, text, mime) {
+  const blob = new Blob([text], { type: mime || 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+/* =====================================================================
+   2. STORAGE  (localStorage with in-memory fallback)
+   ===================================================================== */
+const Store = {
+  PREFIX: 'dkarten.v1.',
+  mem: {},
+  get(key, def) {
+    try { const raw = localStorage.getItem(this.PREFIX + key); return raw == null ? def : JSON.parse(raw); }
+    catch (e) { return key in this.mem ? this.mem[key] : def; }
+  },
+  set(key, val) {
+    this.mem[key] = val;
+    try { localStorage.setItem(this.PREFIX + key, JSON.stringify(val)); return true; }
+    catch (e) { toast('⚠ Could not save to browser storage (private mode or quota). Export your progress regularly.'); return false; }
+  },
+  remove(key) { delete this.mem[key]; try { localStorage.removeItem(this.PREFIX + key); } catch (e) { /* ignore */ } }
+};
+
+/* =====================================================================
+   3. DATA  (cards, Excel/CSV parsing, merging)
+   ===================================================================== */
+const COLUMNS  = ['ID','Deck','Type','Article','German','English','Hungarian','Example_DE','Example_EN','Tags','Source'];
+const REQUIRED = ['ID','German','English'];
+const TYPES    = ['Wort','Phrase','Abkürzung','Grammatik'];
+const UNTAGGED = '(untagged)';
+
+const DEMO_CARDS = [
+  { id:'demo-1', deck:'Demo – Fahrwerk', type:'Wort', article:'der', german:'Stoßdämpfer', english:'shock absorber', hungarian:'lengéscsillapító',
+    exampleDe:'Der Stoßdämpfer wurde im Rahmen der Dauerlauferprobung getauscht.', exampleEn:'The shock absorber was replaced during the endurance test.', tags:['Fahrwerk','Hardware'], source:'Demo' },
+  { id:'demo-2', deck:'Demo – Office', type:'Phrase', article:'', german:'in Abstimmung mit', english:'in coordination with', hungarian:'egyeztetve valakivel',
+    exampleDe:'Die Freigabe erfolgt in Abstimmung mit dem Testmanager.', exampleEn:'The release takes place in coordination with the test manager.', tags:['Corporate','Meeting'], source:'Demo' },
+  { id:'demo-3', deck:'Demo – Fahrwerk', type:'Abkürzung', article:'', german:'HIL', english:'Hardware-in-the-Loop', hungarian:'hardver a hurokban (HIL-tesztelés)',
+    exampleDe:'Die Funktion wird zuerst am HIL-Prüfstand abgesichert.', exampleEn:'The function is first validated on the HIL test bench.', tags:['Test'], source:'Demo' }
+];
+
+const normKey = s => String(s ?? '').toLowerCase().replace(/[\s_\-]/g, '');
+const cell = v => (v == null ? '' : String(v).trim());
+
+/** Minimal RFC-4180 CSV parser (auto-detects , ; or tab). Returns array of rows. */
+const Csv = {
+  parse(text) {
+    text = text.replace(/^\uFEFF/, '');
+    const first = text.split(/\r?\n/)[0] || '';
+    const delim = [';', '\t', ','].map(d => [d, first.split(d).length]).sort((a, b) => b[1] - a[1])[0][0];
+    const rows = []; let row = [], f = '', q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c;
+      } else if (c === '"') q = true;
+      else if (c === delim) { row.push(f); f = ''; }
+      else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(f); rows.push(row); row = []; f = ''; }
+      else f += c;
+    }
+    if (f !== '' || row.length) { row.push(f); rows.push(row); }
+    return rows;
+  },
+  stringify(rows, delim) {
+    const q = v => { v = String(v ?? ''); return (v.includes(delim) || /["\n\r]/.test(v)) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+    return '\uFEFF' + rows.map(r => r.map(q).join(delim)).join('\r\n');
+  }
+};
+
+const Deck = {
+  /** Read an Excel workbook (ArrayBuffer) → { rows, sheetName, fallback } using the "Cards" sheet or the first sheet. */
+  readWorkbook(buf) {
+    const wb = XLSX.read(buf, { type: 'array' });
+    if (!wb.SheetNames.length) throw new Error('The workbook contains no sheets.');
+    let name = wb.SheetNames.find(n => n.trim().toLowerCase() === 'cards');
+    const fallback = !name; if (!name) name = wb.SheetNames[0];
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1, defval: '', blankrows: true, raw: true });
+    return { rows, sheetName: name, fallback };
+  },
+
+  /** Convert a 2-D array into normalized cards. Returns { cards, warnings }. Throws on structural errors. */
+  parse(rows) {
+    if (!rows || !rows.length) throw new Error('The file is empty.');
+    // Find the header row (best match within the first 5 rows)
+    const known = COLUMNS.map(normKey);
+    let hi = 0, best = -1;
+    rows.slice(0, 5).forEach((r, i) => { const sc = r.filter(c => known.includes(normKey(c))).length; if (sc > best) { best = sc; hi = i; } });
+    const header = rows[hi].map(normKey);
+    const idx = {}; COLUMNS.forEach(c => { idx[c] = header.indexOf(normKey(c)); });
+    const missing = REQUIRED.filter(c => idx[c] < 0);
+    if (missing.length) throw new Error(`Missing required column(s): ${missing.join(', ')}. Expected header: ${COLUMNS.join(', ')}.`);
+
+    const warnings = [], cards = [], seen = new Set();
+    const get = (r, c) => idx[c] >= 0 ? cell(r[idx[c]]) : '';
+    for (let i = hi + 1; i < rows.length; i++) {
+      const r = rows[i], line = i + 1;
+      if (!r || r.every(c => cell(c) === '')) continue;                       // empty row
+      const id = get(r, 'ID'), german = get(r, 'German'), english = get(r, 'English');
+      if (!id && !german && !english) continue;
+      if (!id || !german || !english) { warnings.push(`Row ${line}: skipped – ID, German and English are required.`); continue; }
+      if (seen.has(id)) { warnings.push(`Row ${line}: duplicate ID "${id}" – skipped.`); continue; }
+      seen.add(id);
+      let type = get(r, 'Type');
+      const t = TYPES.find(x => x.toLowerCase() === type.toLowerCase() || (x === 'Abkürzung' && type.toLowerCase() === 'abkuerzung'));
+      if (t) type = t; else if (type) warnings.push(`Row ${line}: unknown Type "${type}" kept as is.`);
+      let article = get(r, 'Article').toLowerCase();
+      if (article && !['der','die','das','der/die'].includes(article)) { warnings.push(`Row ${line}: unknown Article "${article}" ignored.`); article = ''; }
+      cards.push({
+        id, deck: get(r, 'Deck'), type, article, german, english,
+        hungarian: get(r, 'Hungarian'), exampleDe: get(r, 'Example_DE'), exampleEn: get(r, 'Example_EN'),
+        tags: get(r, 'Tags').split(',').map(x => x.trim()).filter(Boolean), source: get(r, 'Source')
+      });
+    }
+    if (!cards.length) throw new Error('No valid cards found in the file.' + (warnings.length ? ' ' + warnings[0] : ''));
+    return { cards, warnings };
+  },
+
+  same(a, b) { return JSON.stringify([a.deck,a.type,a.article,a.german,a.english,a.hungarian,a.exampleDe,a.exampleEn,a.tags.join(','),a.source]) ===
+                       JSON.stringify([b.deck,b.type,b.article,b.german,b.english,b.hungarian,b.exampleDe,b.exampleEn,b.tags.join(','),b.source]); },
+
+  /** MERGE by ID – new added, changed updated, progress untouched (it lives in a separate store). */
+  merge(incoming) {
+    if (State.isDemo) { State.cards.forEach(c => delete State.progress[c.id]); State.cards = []; State.isDemo = false; }
+    const map = new Map(State.cards.map(c => [c.id, c]));
+    let added = 0, updated = 0, unchanged = 0;
+    for (const inc of incoming) {
+      const ex = map.get(inc.id);
+      if (!ex) { State.cards.push(inc); map.set(inc.id, inc); added++; }
+      else if (Deck.same(ex, inc)) unchanged++;
+      else { Object.assign(ex, inc); updated++; }
+    }
+    Deck.save(); Progress.save();
+    return { added, updated, unchanged };
+  },
+  save() { Store.set('cards', State.cards); Deck.reindex(); },
+  reindex() { State.map = new Map(State.cards.map(c => [c.id, c])); },
+  load() {
+    const saved = Store.get('cards', null);
+    if (Array.isArray(saved) && saved.length) { State.cards = saved; State.isDemo = false; }
+    else { State.cards = JSON.parse(JSON.stringify(DEMO_CARDS)); State.isDemo = true; }
+    Deck.reindex();
+  }
+};
+const deckName = c => c.deck || '(no deck)';
+const typeName = c => c.type || '(no type)';
+
+/* =====================================================================
+   4. SCHEDULER  (SM-2, Anki-like)
+   ===================================================================== */
+const Scheduler = {
+  MATURE: 21, MIN_EASE: 1.3,
+  blank() { return { ease: 2.5, interval: 0, repetitions: 0, dueDate: null, lapses: 0, lastReviewed: null }; },
+
+  /** Pure function: returns the new progress object for rating 1=Again 2=Hard 3=Good 4=Easy. */
+  next(p, rating, today) {
+    const n = Object.assign(Scheduler.blank(), p);
+    let ivl;
+    if (rating === 1) {
+      n.lapses += 1; n.ease = Math.max(Scheduler.MIN_EASE, n.ease - 0.20); n.repetitions = 0; ivl = 0;      // relearn: due again today
+    } else {
+      if (n.repetitions === 0) ivl = [0, 1, 2, 4][rating - 1];                                              // new / relearning card
+      else {
+        const hard = Math.max(1, Math.round(n.interval * 1.2));
+        const good = Math.max(hard + 1, Math.round(n.interval * n.ease));
+        const easy = Math.max(good + 1, Math.round(n.interval * n.ease * 1.3));
+        ivl = [0, hard, good, easy][rating - 1];
+      }
+      if (rating === 2) n.ease = Math.max(Scheduler.MIN_EASE, n.ease - 0.15);
+      if (rating === 4) n.ease += 0.15;
+      n.repetitions += 1;
+    }
+    n.interval = ivl; n.dueDate = addDays(today, ivl); n.lastReviewed = new Date().toISOString();
+    return n;
+  },
+  /** Label for a rating button, e.g. "Good · 3d". */
+  label(p, rating, today) {
+    const names = ['', 'Again', 'Hard', 'Good', 'Easy'];
+    if (rating === 1) return 'Again · soon';
+    return `${names[rating]} · ${fmtInterval(Scheduler.next(p, rating, today).interval)}`;
+  }
+};
+const Progress = {
+  load() { State.progress = Store.get('progress', {}); State.daily = Store.get('daily', {}); },
+  save() { Store.set('progress', State.progress); Store.set('daily', State.daily); },
+  get: id => State.progress[id] || null,
+  state(id) { const p = State.progress[id]; if (!p || !p.lastReviewed) return 'new'; return p.interval >= Scheduler.MATURE ? 'mature' : 'learning'; },
+  isDue(id, today) { const p = State.progress[id]; return !!(p && p.lastReviewed && p.dueDate && p.dueDate <= today); },
+  /** Record one answer in the daily log (not used in cram mode). */
+  logAnswer(item, rating) {
+    const t = todayStr(); const d = State.daily[t] || (State.daily[t] = { total: 0, correct: 0, newDone: 0, revDone: 0 });
+    d.total++; if (rating > 1) d.correct++;
+    if (!item.counted) { item.isNew ? d.newDone++ : d.revDone++; item.counted = true; }
+  }
+};
+
+/* =====================================================================
+   5. TEXT HELPERS  (typing check, diff, cloze)
+   ===================================================================== */
+const Txt = {
+  /** Lower-case, strip punctuation, collapse spaces (keeps umlauts). */
+  light(s) { return String(s ?? '').normalize('NFC').toLowerCase().replace(/['’`´]/g, '').replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim(); },
+  /** Like light() but also folds ä/ae, ö/oe, ü/ue, ß/ss so both spellings compare equal. */
+  fold(s) { return Txt.light(s).replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss'); },
+
+  /** Character diff (LCS). a = typed, b = expected. Returns HTML for both and the LCS length. */
+  diff(a, b) {
+    const A = Array.from(a), B = Array.from(b), n = A.length, m = B.length;
+    const dp = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+    for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--)
+      dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    const sp = c => esc(c === ' ' ? '\u00a0' : c);
+    let i = 0, j = 0, ha = '', hb = '';
+    while (i < n && j < m) {
+      if (A[i] === B[j]) { ha += sp(A[i]); hb += sp(B[j]); i++; j++; }
+      else if (dp[i + 1][j] >= dp[i][j + 1]) { ha += `<span class="d-bad">${sp(A[i])}</span>`; i++; }
+      else { hb += `<span class="d-miss">${sp(B[j])}</span>`; j++; }
+    }
+    while (i < n) { ha += `<span class="d-bad">${sp(A[i++])}</span>`; }
+    while (j < m) { hb += `<span class="d-miss">${sp(B[j++])}</span>`; }
+    return { ha, hb, lcs: dp[0][0] };
+  },
+
+  /** Acceptable answers for typing mode: the word itself, or with article. */
+  targets(card) {
+    const t = [card.german];
+    if (card.article) card.article.split('/').forEach(a => t.push(`${a} ${card.german}`));
+    return t;
+  },
+  /** Compare typed text with a card; ignores case, spaces, punctuation, accepts ae/oe/ue/ss. */
+  compare(typed, card) {
+    const targets = Txt.targets(card), ft = Txt.fold(typed);
+    const correct = !!ft && targets.some(t => Txt.fold(t) === ft);
+    const lt = Txt.light(typed);
+    let bestT = targets[0], best = null;
+    targets.forEach(t => { const d = Txt.diff(lt, Txt.light(t)); if (!best || d.lcs > best.lcs) { best = d; bestT = t; } });
+    return { correct, typed, expected: bestT, diff: best, empty: !ft };
+  },
+
+  /** Find the German term inside the example sentence. Returns {start,end} or null. */
+  findTerm(sentence, term) {
+    if (!sentence || !term) return null;
+    const s = sentence.toLowerCase(), t = term.toLowerCase().trim(), isL = ch => !!ch && /[\p{L}\p{M}]/u.test(ch);
+    let from = 0, i;
+    while ((i = s.indexOf(t, from)) >= 0) {                              // exact match at a word start
+      if (!isL(s[i - 1])) {
+        let end = i + t.length;
+        if (!/\s/.test(t)) {
+          if (t.length < 5 && isL(s[end])) { from = i + 1; continue; }     // short terms / abbreviations: whole word only
+          while (isL(s[end])) end++;                                       // include inflection ending
+        }
+        return { start: i, end };
+      }
+      from = i + 1;
+    }
+    // multi-word phrases: try shorter leading / trailing word groups (e.g. "auf dem Laufenden halten" → "auf dem Laufenden")
+    const parts = t.split(/\s+/);
+    if (parts.length > 2) {
+      for (let k = parts.length - 1; k >= 2; k--) for (const g of [parts.slice(0, k), parts.slice(parts.length - k)]) {
+        const sub = g.join(' '); let f2 = 0, j;
+        while ((j = s.indexOf(sub, f2)) >= 0) { if (!isL(s[j - 1])) { let end = j + sub.length; while (isL(s[end])) end++; return { start: j, end }; } f2 = j + 1; }
+      }
+    }
+    // fallback for inflected forms: match a token that begins with the stem of the longest word
+    const words = t.split(/[\s\/,()\-]+/).filter(w => w.length >= 4).sort((a, b) => b.length - a.length);
+    if (!words.length) return null;
+    const w = words[0], stem = w.length >= 6 ? w.slice(0, -2) : w.slice(0, -1);
+    const re = /[\p{L}\p{M}]+/gu; let m;
+    while ((m = re.exec(s))) if (m[0].startsWith(stem)) return { start: m.index, end: m.index + m[0].length };
+    return null;
+  },
+  /** Example sentence as HTML with the term wrapped (bold) or replaced by a blank. */
+  exampleHTML(card, mode) {
+    const r = Txt.findTerm(card.exampleDe, card.german), s = card.exampleDe;
+    if (!r) return esc(s);
+    const mid = s.slice(r.start, r.end);
+    return esc(s.slice(0, r.start)) + (mode === 'blank' ? `<span class="blank">${esc(mid)}</span>` : `<b class="term">${esc(mid)}</b>`) + esc(s.slice(r.end));
+  }
+};
+const articleHTML = a => !a ? '' : a.split('/').map(x => `<span class="art art-${x}">${esc(x)}</span>`).join('<span class="muted">/</span>');
+const germanHTML  = c => (c.article ? articleHTML(c.article) + ' ' : '') + esc(c.german);
+const speakText   = c => (c.article ? c.article.split('/')[0] + ' ' : '') + c.german;
+
+/* =====================================================================
+   6. TEXT-TO-SPEECH  (Web Speech API)
+   ===================================================================== */
+const TTS = {
+  ok: 'speechSynthesis' in window, voice: null,
+  init() {
+    if (!this.ok) return;
+    const pick = () => { const v = speechSynthesis.getVoices(); this.voice = v.find(x => x.lang === 'de-DE') || v.find(x => (x.lang || '').toLowerCase().startsWith('de')) || null; };
+    pick(); speechSynthesis.onvoiceschanged = pick;
+  },
+  speak(text) {
+    if (!this.ok) { toast('Speech synthesis is not supported in this browser.'); return; }
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text); u.lang = 'de-DE'; if (this.voice) u.voice = this.voice;
+    u.rate = clamp(Number(State.settings.speed) || 1, 0.7, 1.2); speechSynthesis.speak(u);
+  }
+};
+
+/* =====================================================================
+   7. STATE
+   ===================================================================== */
+const MODES = [
+  { id:'de-en',  label:'DE → EN',                  desc:'See German, recall English' },
+  { id:'en-de',  label:'EN → DE',                  desc:'See English, recall German' },
+  { id:'de-hu',  label:'DE → HU',                  desc:'Needs Hungarian column' },
+  { id:'hu-de',  label:'HU → DE',                  desc:'Needs Hungarian column' },
+  { id:'typing', label:'Typing',                   desc:'Type the German answer' },
+  { id:'article',label:'Article drill',            desc:'der / die / das for nouns' },
+  { id:'cloze',  label:'Cloze',                    desc:'Fill the gap in the example' }
+];
+const State = {
+  cards: [], map: new Map(), isDemo: true, progress: {}, daily: {},
+  settings: { newPerDay: 15, maxReviews: 100, mode: 'de-en', cram: false, autoplay: false, speed: 1, csvDelim: ';', theme: null, excl: { decks: [], types: [], tags: [] } },
+  view: 'study', screen: 'start', session: null, lastImport: null
+};
+const Settings = {
+  load() { State.settings = Object.assign(State.settings, Store.get('settings', {})); State.settings.excl = Object.assign({ decks: [], types: [], tags: [] }, State.settings.excl); },
+  save() { Store.set('settings', State.settings); }
+};
+function eligible(card, mode) {
+  switch (mode) {
+    case 'de-hu': case 'hu-de': return !!card.hungarian;
+    case 'article': return card.type === 'Wort' && /^(der|die|das|der\/die)$/.test(card.article);
+    case 'cloze': return !!card.exampleDe && !!Txt.findTerm(card.exampleDe, card.german);
+    default: return true;
+  }
+}
+const Filter = {
+  cards() {
+    const x = State.settings.excl;
+    return State.cards.filter(c => !x.decks.includes(deckName(c)) && !x.types.includes(typeName(c)) &&
+      (c.tags.length ? c.tags.some(t => !x.tags.includes(t)) : !x.tags.includes(UNTAGGED)));
+  }
+};
+
+/* =====================================================================
+   8. STUDY SESSION
+   ===================================================================== */
+const Study = {
+  /** Build the queue for the chosen mode. Normal: due reviews + new (daily limits). Cram: everything selected. */
+  buildQueue(mode, cram) {
+    const today = todayStr(), pool = Filter.cards().filter(c => eligible(c, mode));
+    const mk = c => ({ id: c.id, isNew: Progress.state(c.id) === 'new', counted: false });
+    if (cram) return shuffle(pool).map(mk);
+    const d = State.daily[today] || {};
+    const newLeft = Math.max(0, State.settings.newPerDay - (d.newDone || 0));
+    const revLeft = Math.max(0, State.settings.maxReviews - (d.revDone || 0));
+    const due = shuffle(pool.filter(c => Progress.isDue(c.id, today))).sort((a, b) => Progress.get(a.id).dueDate.localeCompare(Progress.get(b.id).dueDate));
+    const nw = pool.filter(c => Progress.state(c.id) === 'new');
+    return [...due.slice(0, revLeft), ...nw.slice(0, newLeft)].map(mk);
+  },
+
+  start() {
+    const S = State.settings, queue = Study.buildQueue(S.mode, S.cram);
+    if (!queue.length) { toast('No cards to study with these settings.'); return; }
+    State.session = { queue, total: queue.length, done: 0, answers: 0, ratings: [0, 0, 0, 0], mode: S.mode, cram: S.cram, startedAt: Date.now(), phase: 'front', result: null, lock: 0 };
+    State.screen = 'session'; Study.renderSession();
+  },
+
+  /* ---------- screens ---------- */
+  show() {
+    if (State.screen === 'session' && State.session) Study.renderSession();
+    else if (State.screen === 'summary') Study.renderSummary();
+    else Study.renderStart();
+  },
+
+  renderStart() {
+    State.screen = 'start';
+    const root = $('#view-study'), S = State.settings, x = S.excl, today = todayStr();
+    const decks = uniqSorted(State.cards.map(deckName)), types = uniqSorted(State.cards.map(typeName));
+    const tags = uniqSorted(State.cards.flatMap(c => c.tags.length ? c.tags : [UNTAGGED]));
+    const filtered = Filter.cards();
+    const modeCount = id => filtered.filter(c => eligible(c, id)).length;
+    if (!modeCount(S.mode)) S.mode = 'de-en';
+    const q = Study.buildQueue(S.mode, S.cram), nNew = q.filter(i => i.isNew).length;
+
+    const deckRows = decks.map(d => {
+      const cs = State.cards.filter(c => deckName(c) === d);
+      const n = cs.filter(c => Progress.state(c.id) === 'new').length;
+      const l = cs.filter(c => Progress.state(c.id) === 'learning').length;
+      const due = cs.filter(c => Progress.isDue(c.id, today)).length;
+      return `<tr><td><label class="chip"><input type="checkbox" data-f="decks" data-v="${esc(d)}" ${x.decks.includes(d) ? '' : 'checked'}> ${esc(d)}</label></td>
+        <td class="num">${n}</td><td class="num">${l}</td><td class="num"><b>${due}</b></td></tr>`;
+    }).join('');
+    const chip = (f, v) => `<label class="chip"><input type="checkbox" data-f="${f}" data-v="${esc(v)}" ${x[f].includes(v) ? '' : 'checked'}> ${esc(v)}</label>`;
+
+    root.innerHTML = `
+      ${Study.importBoxHTML()}
+      <div class="grid2">
+        <div class="card-box">
+          <h2>Decks <small>(New / Learning / Due)</small></h2>
+          <table><thead><tr><th>Deck</th><th class="num">New</th><th class="num">Learning</th><th class="num">Due</th></tr></thead><tbody>${deckRows}</tbody></table>
+          <div class="row" style="margin-top:.5rem"><button class="btn" data-act="sel-all">Select all</button><button class="btn" data-act="sel-none">Select none</button></div>
+        </div>
+        <div class="card-box">
+          <h2>Types</h2><div class="chips">${types.map(t => chip('types', t)).join('')}</div>
+          <h2 style="margin-top:1rem">Tags</h2><div class="chips">${tags.map(t => chip('tags', t)).join('')}</div>
+        </div>
+      </div>
+      <div class="card-box">
+        <h2>Study mode</h2>
+        <div class="modes">${MODES.map(m => { const n = modeCount(m.id); return `
+          <label class="mode ${S.mode === m.id ? 'sel' : ''} ${n ? '' : 'dis'}"><input type="radio" name="mode" value="${m.id}" ${S.mode === m.id ? 'checked' : ''} ${n ? '' : 'disabled'}>
+          <span><b>${m.label} <small>(${n})</small></b><small>${m.desc}</small></span></label>`; }).join('')}</div>
+      </div>
+      <div class="grid2">
+        <div class="card-box">
+          <h2>Daily limits &amp; audio</h2>
+          <div class="grid2">
+            <label class="field">New cards / day<input type="number" min="0" max="999" data-s="newPerDay" value="${S.newPerDay}"></label>
+            <label class="field">Max reviews / day<input type="number" min="0" max="9999" data-s="maxReviews" value="${S.maxReviews}"></label>
+          </div>
+          <label class="chip" style="margin-top:.7rem"><input type="checkbox" data-s="autoplay" ${S.autoplay ? 'checked' : ''}> Auto-play 🔊 on flip</label>
+          <label class="field" style="margin-top:.5rem">Speech speed: <b id="speedVal">${Number(S.speed).toFixed(2)}×</b><input type="range" min="0.7" max="1.2" step="0.05" data-s="speed" value="${S.speed}"></label>
+        </div>
+        <div class="card-box">
+          <h2>Start</h2>
+          <label class="chip"><input type="checkbox" data-s="cram" ${S.cram ? 'checked' : ''}> Cram mode <small>(ignore due dates, schedule unchanged)</small></label>
+          <p style="margin:.8rem 0"><b>${q.length}</b> card${q.length === 1 ? '' : 's'} in this session
+            <span class="muted">· ${nNew} new · ${q.length - nNew} ${S.cram ? 'existing' : 'due'}</span></p>
+          <button class="btn primary big" data-act="start" ${q.length ? '' : 'disabled'}>Start studying</button>
+          ${q.length ? '' : '<p class="hint">Nothing due or new right now. Enable Cram mode, widen the filters, or raise the daily limits.</p>'}
+        </div>
+      </div>`;
+  },
+
+  importBoxHTML() {
+    const li = State.lastImport; let res = '';
+    if (li) {
+      if (li.error) res = `<div class="result err"><b>Import failed:</b> ${esc(li.error)}</div>`;
+      else res = `<div class="result"><b>${li.added} new, ${li.updated} updated, ${li.unchanged} unchanged</b>${li.note ? ' · ' + esc(li.note) : ''}
+        ${li.warnings.length ? `<details><summary>${li.warnings.length} warning(s)</summary><ul>${li.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul></details>` : ''}</div>`;
+    }
+    return `<div class="card-box"><div class="dropzone" id="dz">
+      <b>Load your Excel deck</b> <span class="muted">(sheet “Cards”)</span><br>
+      <span class="muted">Drag &amp; drop an .xlsx / .csv file anywhere on this page, or</span><br>
+      <button class="btn primary" style="margin-top:.5rem" data-act="pick-deck">Choose file…</button>
+      <div class="hint" style="margin-top:.5rem">${State.isDemo ? 'Currently showing 3 built-in demo cards.' : `${State.cards.length} cards loaded. Re-importing merges by ID and keeps your progress.`}</div>
+    </div>${res}</div>`;
+  },
+
+  /* ---------- the card view ---------- */
+  renderSession() {
+    const root = $('#view-study'), s = State.session;
+    if (!$('#card3d', root)) {
+      root.innerHTML = `
+        <div class="sess-top"><button class="btn" data-act="end">✕ End</button><div class="progress"><div id="pbar"></div></div><small id="pcount"></small></div>
+        <div class="scene" id="scene"><div class="card3d" id="card3d"><div class="face front" id="front"></div><div class="face back" id="back" aria-live="polite"></div></div></div>
+        <div class="actionbar" id="actionbar"></div>
+        <div class="kbd-hint" id="kbdhint"></div>`;
+    }
+    Study.showCard();
+  },
+
+  current() { const s = State.session; return { item: s.queue[0], card: State.map.get(s.queue[0].id) }; },
+
+  showCard() {
+    const s = State.session, { item, card } = Study.current();
+    s.phase = 'front'; s.result = null;
+    const c3 = $('#card3d'), scene = $('#scene');
+    c3.classList.add('noanim'); c3.classList.remove('flipped');             // snap back without showing the next answer
+    $('#front').innerHTML = Study.frontHTML(card, s.mode);
+    $('#back').innerHTML = '';
+    $('#actionbar').innerHTML = `<button class="btn showbtn" data-act="show">${s.mode === 'typing' ? 'Check answer' : s.mode === 'article' ? 'I don’t know' : 'Show answer'} <small>(Space)</small></button>`;
+    $('#kbdhint').textContent = s.mode === 'article' ? 'Keys: 1 = der · 2 = die · 3 = das · Space = give up' : 'Keys: Space/Enter = flip · 1–4 = rate';
+    $('#pbar').style.width = (s.done / s.total * 100) + '%';
+    $('#pcount').textContent = `${s.done} / ${s.total}${s.cram ? ' · cram' : ''}`;
+    void c3.offsetWidth; c3.classList.remove('noanim');
+    scene.classList.remove('enter'); void scene.offsetWidth; scene.classList.add('enter');
+    if (s.mode === 'typing') { const inp = $('#typeInput'); if (inp) setTimeout(() => inp.focus(), 60); }
+  },
+
+  metaHTML(card) { return `<div class="meta"><span class="badge">${esc(deckName(card))}</span>${card.type ? `<span class="badge type">${esc(card.type)}</span>` : ''}</div>`; },
+
+  frontHTML(card, mode) {
+    const speak = t => `<button class="icon-btn speak" data-say="${esc(t)}" title="Read aloud" aria-label="Read aloud">🔊</button>`;
+    let body = '';
+    switch (mode) {
+      case 'de-en': case 'de-hu':
+        body = `<div class="prompt-label">German</div><div class="prompt">${germanHTML(card)}</div>${speak(speakText(card))}`; break;
+      case 'en-de':
+        body = `<div class="prompt-label">English</div><div class="prompt">${esc(card.english)}</div><div class="hint">Say it in German</div>`; break;
+      case 'hu-de':
+        body = `<div class="prompt-label">Hungarian</div><div class="prompt">${esc(card.hungarian)}</div><div class="hint">Say it in German</div>`; break;
+      case 'typing':
+        body = `<div class="prompt-label">English</div><div class="prompt">${esc(card.english)}</div>
+          <div class="type-row"><input type="text" id="typeInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the German …" aria-label="German answer"><button class="btn primary" data-act="show">Check</button></div>
+          <div class="hint">Case, punctuation &amp; extra spaces are ignored · ae/oe/ue/ss accepted${card.article ? ' · article optional' : ''}</div>`; break;
+      case 'article':
+        body = `<div class="prompt-label">Which article?</div><div class="prompt">${esc(card.german)}</div>
+          <div class="art-btns"><button class="b-der" data-art="der">der</button><button class="b-die" data-art="die">die</button><button class="b-das" data-art="das">das</button></div>`; break;
+      case 'cloze':
+        body = `<div class="prompt-label">Fill the gap</div><div class="prompt sentence">${Txt.exampleHTML(card, 'blank')}</div>
+          <div class="hint">${esc(card.exampleEn || card.english)}</div>${card.exampleEn ? `<div class="hint">Hint: ${esc(card.english)}</div>` : ''}`; break;
+    }
+    return Study.metaHTML(card) + `<div class="center">${body}</div>`;
+  },
+
+  backHTML(card, res) {
+    let top = '';
+    if (res && res.kind === 'typing') {
+      top = res.empty ? `<div class="verdict bad">No answer given.</div>` :
+        `<div class="verdict ${res.correct ? '' : 'bad'}"><b>${res.correct ? '✓ Correct' : '✗ Not quite'}</b>
+          ${res.correct ? '' : `<div class="diffline">You: ${res.diff.ha}</div><div class="diffline">Exp: ${res.diff.hb}</div>`}</div>`;
+    } else if (res && res.kind === 'article') {
+      top = `<div class="verdict ${res.correct ? '' : 'bad'}"><b>${res.correct ? '✓ Correct' : (res.chosen ? '✗ Wrong' : 'Skipped')}</b>${res.chosen ? ` – you chose ${articleHTML(res.chosen)}` : ''}</div>`;
+    }
+    const ex = card.exampleDe ? `<div class="ex"><div class="ex-de">${Txt.exampleHTML(card, 'bold')} <button class="icon-btn speak" data-say="${esc(card.exampleDe)}" title="Read example aloud" aria-label="Read example aloud">🔊</button></div>
+        ${card.exampleEn ? `<div class="ex-en">${esc(card.exampleEn)}</div>` : ''}</div>` : '';
+    return Study.metaHTML(card) + `<div class="body">${top}
+      <div class="ans-de">${germanHTML(card)} <button class="icon-btn speak" data-say="${esc(speakText(card))}" title="Read aloud" aria-label="Read aloud">🔊</button></div>
+      <div class="ans-en">${esc(card.english)}</div>
+      ${card.hungarian ? `<div class="ans-hu">🇭🇺 ${esc(card.hungarian)}</div>` : ''}
+      ${ex}
+      ${card.tags.length ? `<div>${card.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
+      ${card.source ? `<div class="src">Source: ${esc(card.source)}</div>` : ''}</div>`;
+  },
+
+  /** Flip the card; `res` carries the typing/article result (if any). */
+  flip(res) {
+    const s = State.session; if (!s || s.phase !== 'front') return;
+    const { card } = Study.current(); s.phase = 'back'; s.result = res || null;
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();   // so keyboard shortcuts work
+    $('#back').innerHTML = Study.backHTML(card, s.result);
+    $('#card3d').classList.add('flipped');
+    const p = Progress.get(card.id) || Scheduler.blank(), today = todayStr(), sug = s.result ? (s.result.correct ? 3 : 1) : 0;
+    $('#actionbar').innerHTML = `<div class="rates">${[1, 2, 3, 4].map(r => {
+      const lab = s.cram ? ['', 'Again', 'Hard', 'Good', 'Easy'][r] : Scheduler.label(p, r, today);
+      return `<button class="rate r${r} ${sug === r ? 'suggest' : ''}" data-rate="${r}"><span>${lab}</span><i>key ${r}</i></button>`; }).join('')}</div>`;
+    $('#kbdhint').textContent = 'Keys: 1 Again · 2 Hard · 3 Good · 4 Easy · Space/Enter = ' + (sug === 1 ? 'Again (suggested)' : 'Good');
+    s.lock = Date.now() + 250;
+    if (State.settings.autoplay) TTS.speak(card.exampleDe && s.mode === 'cloze' ? card.exampleDe : speakText(card));
+  },
+
+  /** "Show answer" button – behaviour depends on mode. */
+  showAnswer() {
+    const s = State.session; if (!s || s.phase !== 'front') return;
+    if (s.mode === 'typing') Study.checkTyping();
+    else if (s.mode === 'article') Study.flip({ kind: 'article', chosen: null, correct: false });
+    else Study.flip(null);
+  },
+  checkTyping() {
+    const { card } = Study.current(), inp = $('#typeInput');
+    const r = Txt.compare(inp ? inp.value : '', card);
+    Study.flip(Object.assign({ kind: 'typing' }, r));
+  },
+  answerArticle(choice) {
+    const { card } = Study.current(), ok = card.article.split('/').includes(choice);
+    Study.flip({ kind: 'article', chosen: choice, correct: ok });
+  },
+
+  /** Apply the rating: update schedule (unless cram), log stats, advance the queue. */
+  rate(r) {
+    const s = State.session; if (!s || s.phase !== 'back') return;
+    const { item } = Study.current(), today = todayStr();
+    if (!s.cram) {
+      State.progress[item.id] = Scheduler.next(Progress.get(item.id) || Scheduler.blank(), r, today);
+      Progress.logAnswer(item, r); Progress.save();
+    }
+    s.answers++; s.ratings[r - 1]++; s.queue.shift();
+    if (r === 1) s.queue.splice(Math.min(3, s.queue.length), 0, item);      // "Again": back in after a few cards
+    else s.done++;
+    if (!s.queue.length) Study.finish(); else Study.showCard();
+  },
+
+  finish() { State.screen = 'summary'; Study.renderSummary(); },
+  endSession() {
+    const s = State.session;
+    if (s && s.answers > 0) { if (confirm('End this session now?')) Study.finish(); }
+    else { State.session = null; Study.renderStart(); }
+  },
+
+  renderSummary() {
+    const s = State.session; if (!s) { Study.renderStart(); return; }
+    const mins = Math.max(1, Math.round((Date.now() - s.startedAt) / 60000));
+    const acc = s.answers ? Math.round((s.answers - s.ratings[0]) / s.answers * 100) : 0;
+    $('#view-study').innerHTML = `<div class="card-box summary">
+      <div class="big">${s.done >= s.total ? '🎉 Session complete' : 'Session ended'}</div>
+      ${s.cram ? '<p class="muted">Cram session – your schedule was not changed.</p>' : ''}
+      <div class="stat-grid">
+        <div class="stat"><b>${s.done}/${s.total}</b><span>Cards done</span></div>
+        <div class="stat"><b>${s.answers}</b><span>Answers</span></div>
+        <div class="stat"><b>${acc}%</b><span>Not “Again”</span></div>
+        <div class="stat"><b>${mins} min</b><span>Time</span></div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><b>${s.ratings[0]}</b><span>Again</span></div><div class="stat"><b>${s.ratings[1]}</b><span>Hard</span></div>
+        <div class="stat"><b>${s.ratings[2]}</b><span>Good</span></div><div class="stat"><b>${s.ratings[3]}</b><span>Easy</span></div>
+      </div>
+      <div class="row" style="justify-content:center"><button class="btn primary big" data-act="home">Back to start</button></div></div>`;
+  }
+};
+
+/* =====================================================================
+   9. UI  (views: Search, Stats, Data; modal; navigation; events)
+   ===================================================================== */
+const UI = {
+  setView(v) {
+    State.view = v;
+    $$('#nav button').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+    $$('.view').forEach(x => x.classList.toggle('active', x.id === 'view-' + v));
+    if (v === 'study') Study.show(); else if (v === 'browse') UI.renderBrowse(); else if (v === 'stats') UI.renderStats(); else UI.renderData();
+  },
+  applyTheme() {
+    const t = State.settings.theme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.dataset.theme = t;
+  },
+  modal(html) { $('#modalBox').innerHTML = html; $('#modal').classList.remove('hidden'); },
+  closeModal() { $('#modal').classList.add('hidden'); },
+
+  /* ----- Search / browse ----- */
+  renderBrowse() {
+    $('#view-browse').innerHTML = `<div class="card-box"><h2>Search cards</h2>
+      <input type="search" id="q" placeholder="Search German, English, Hungarian, tags, ID …" autocomplete="off">
+      <div class="searchres" id="qres" style="margin-top:.7rem"></div></div>`;
+    UI.runSearch('');
+    $('#q').addEventListener('input', e => UI.runSearch(e.target.value));
+  },
+  runSearch(q) {
+    const f = Txt.fold(q), today = todayStr();
+    const res = (f ? State.cards.filter(c => Txt.fold([c.id, c.german, c.english, c.hungarian, c.tags.join(' '), c.deck, c.exampleDe].join(' ')).includes(f)) : State.cards).slice(0, 100);
+    $('#qres').innerHTML = res.length ? `<table><tbody>${res.map(c => {
+      const st = Progress.state(c.id), due = Progress.isDue(c.id, today);
+      return `<tr data-card="${esc(c.id)}"><td>${germanHTML(c)}</td><td class="muted">${esc(c.english)}</td>
+        <td><span class="pill ${st}">${st}</span> ${due ? '<span class="pill due">due</span>' : ''}</td></tr>`; }).join('')}</tbody></table>` : '<p class="muted">No cards match.</p>';
+  },
+  showCardDetail(id) {
+    const c = State.map.get(id); if (!c) return; const p = Progress.get(id) || Scheduler.blank();
+    const row = (k, v) => v ? `<tr><th>${k}</th><td>${v}</td></tr>` : '';
+    UI.modal(`<h2>${germanHTML(c)}</h2>
+      <table>${row('ID', esc(c.id))}${row('Deck / Type', esc(deckName(c)) + ' · ' + esc(c.type || '–'))}${row('English', esc(c.english))}${row('Hungarian', esc(c.hungarian))}
+      ${row('Example DE', c.exampleDe ? Txt.exampleHTML(c, 'bold') : '')}${row('Example EN', esc(c.exampleEn))}${row('Tags', esc(c.tags.join(', ')))}${row('Source', esc(c.source))}</table>
+      <h3 style="margin-top:1rem">Progress – ${Progress.state(id)}</h3>
+      <table>${row('Ease', p.ease.toFixed(2))}${row('Interval', p.lastReviewed ? fmtInterval(p.interval) : '–')}${row('Repetitions', p.repetitions)}
+      ${row('Due date', p.dueDate || '–')}${row('Lapses', p.lapses)}${row('Last reviewed', p.lastReviewed ? new Date(p.lastReviewed).toLocaleString() : 'never')}</table>
+      <div class="row" style="margin-top:1rem"><button class="btn" data-say="${esc(speakText(c))}">🔊 Listen</button>
+      <button class="btn danger" data-act="reset-card" data-id="${esc(id)}">Reset this card</button><button class="btn" data-act="close-modal" style="margin-left:auto">Close</button></div>`);
+  },
+
+  /* ----- Statistics ----- */
+  renderStats() {
+    const today = todayStr(), cards = State.cards;
+    const cnt = { new: 0, learning: 0, mature: 0 }; cards.forEach(c => cnt[Progress.state(c.id)]++);
+    const d = State.daily[today] || { total: 0, correct: 0 };
+    const acc = d.total ? Math.round(d.correct / d.total * 100) + '%' : '–';
+    let streak = 0, day = State.daily[today] && State.daily[today].total > 0 ? today : addDays(today, -1);
+    while (State.daily[day] && State.daily[day].total > 0) { streak++; day = addDays(day, -1); }
+    const forecast = Array(14).fill(0);
+    cards.forEach(c => { if (Progress.state(c.id) === 'new') return; const p = Progress.get(c.id); const off = Math.round((parseDate(p.dueDate) - parseDate(today)) / 864e5); if (off < 14) forecast[Math.max(0, off)]++; });
+    const leeches = cards.filter(c => (Progress.get(c.id) || {}).lapses >= 4).sort((a, b) => Progress.get(b.id).lapses - Progress.get(a.id).lapses).slice(0, 10);
+    $('#view-stats').innerHTML = `
+      <div class="stat-grid">
+        <div class="stat"><b>${cnt.new}</b><span>New</span></div><div class="stat"><b>${cnt.learning}</b><span>Learning</span></div>
+        <div class="stat"><b>${cnt.mature}</b><span>Mature (≥21d)</span></div><div class="stat"><b>${d.total}</b><span>Reviews today</span></div>
+        <div class="stat"><b>${acc}</b><span>Accuracy today</span></div><div class="stat"><b>${streak} 🔥</b><span>Day streak</span></div>
+      </div>
+      <div class="card-box"><h2>Forecast – due cards, next 14 days <small>(today includes overdue)</small></h2>${UI.forecastSVG(forecast, today)}</div>
+      <div class="card-box"><h2>Top 10 leeches <small>(lapses ≥ 4)</small></h2>
+        ${leeches.length ? `<table><thead><tr><th>German</th><th>English</th><th class="num">Lapses</th><th class="num">Ease</th></tr></thead><tbody>
+        ${leeches.map(c => `<tr data-card="${esc(c.id)}" style="cursor:pointer"><td>${germanHTML(c)}</td><td class="muted">${esc(c.english)}</td><td class="num">${Progress.get(c.id).lapses}</td><td class="num">${Progress.get(c.id).ease.toFixed(2)}</td></tr>`).join('')}</tbody></table>`
+        : '<p class="muted">No leeches – great!</p>'}</div>`;
+  },
+  forecastSVG(data, today) {
+    const W = 600, H = 210, bw = 30, gap = 12, base = 170, max = Math.max(1, ...data), x0 = (W - (bw + gap) * 14 + gap) / 2;
+    let out = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Forecast of due cards for the next 14 days">`;
+    data.forEach((v, i) => {
+      const h = Math.round(v / max * 130), x = x0 + i * (bw + gap), lab = i === 0 ? 'Today' : parseDate(addDays(today, i)).toLocaleDateString('en', { weekday: 'short' });
+      out += `<rect x="${x}" y="${base - h}" width="${bw}" height="${Math.max(h, v ? 2 : 0)}" rx="4" fill="${i === 0 ? '#BB0A30' : '#7a7a85'}"/>
+        <text x="${x + bw / 2}" y="${base - h - 6}" text-anchor="middle" class="barv">${v}</text>
+        <text x="${x + bw / 2}" y="${base + 16}" text-anchor="middle">${lab}</text>
+        <text x="${x + bw / 2}" y="${base + 30}" text-anchor="middle">${i ? '+' + i : ''}</text>`;
+    });
+    return out + `<line x1="10" y1="${base}" x2="${W - 10}" y2="${base}" stroke="#7a7a85" stroke-opacity=".5"/></svg>`;
+  },
+
+  /* ----- Data safety ----- */
+  renderData() {
+    const S = State.settings;
+    $('#view-data').innerHTML = `
+      ${Study.importBoxHTML()}
+      <div class="card-box"><h2>Progress backup</h2>
+        <div class="row"><button class="btn primary" data-act="exp-progress">⬇ Export progress (JSON)</button>
+        <button class="btn" data-act="imp-progress">⬆ Import progress (JSON)</button>
+        <button class="btn danger" data-act="reset-progress">Reset progress…</button></div>
+        <p class="hint">Progress is stored in this browser only. Export regularly as a backup or to move to another device.</p></div>
+      <div class="card-box"><h2>Review in Excel</h2>
+        <div class="row"><button class="btn" data-act="exp-csv">⬇ Export leeches + due cards (CSV)</button>
+        <label class="field" style="max-width:220px">CSV delimiter<select data-s="csvDelim"><option value=";" ${S.csvDelim === ';' ? 'selected' : ''}>Semicolon ; (DE/HU Excel)</option><option value="," ${S.csvDelim === ',' ? 'selected' : ''}>Comma , (US Excel)</option></select></label></div></div>
+      <div class="card-box"><h2>Deck</h2>
+        <div class="row"><button class="btn" data-act="template">⬇ Download CSV template</button>
+        <button class="btn danger" data-act="clear-deck">Remove loaded deck (back to demo)…</button></div></div>`;
+  }
+};
+
+/* ----- Import / export actions ----- */
+const IO = {
+  async importDeck(file) {
+    try {
+      const ext = (file.name.split('.').pop() || '').toLowerCase();
+      let rows, note = '';
+      if (['xlsx', 'xlsm', 'xlsb', 'xls', 'ods'].includes(ext)) {
+        if (typeof XLSX === 'undefined') throw new Error('The Excel library (SheetJS) could not be loaded – are you offline? Save the “Cards” sheet as CSV and import that instead.');
+        let wb; try { wb = Deck.readWorkbook(await file.arrayBuffer()); } catch (e) { throw new Error('This file could not be read as an Excel workbook (' + e.message + ').'); }
+        rows = wb.rows; note = `sheet “${wb.sheetName}”` + (wb.fallback ? ' (no “Cards” sheet found – used first sheet)' : '');
+      } else if (['csv', 'tsv', 'txt'].includes(ext)) { rows = Csv.parse(await file.text()); note = 'CSV'; }
+      else if (ext === 'json') { return IO.importProgress(file); }
+      else throw new Error(`Unsupported file type “.${ext || '?'}”. Please use .xlsx or .csv.`);
+
+      const parsed = Deck.parse(rows), m = Deck.merge(parsed.cards);
+      State.lastImport = Object.assign({ warnings: parsed.warnings, note }, m);
+      toast(`${m.added} new, ${m.updated} updated, ${m.unchanged} unchanged`);
+    } catch (e) { State.lastImport = { error: e.message }; toast('Import failed: ' + e.message); }
+    State.session = null; State.screen = 'start'; UI.setView(State.view === 'data' ? 'data' : 'study');
+  },
+  exportProgress() {
+    download(`deutsch-karten-progress-${todayStr()}.json`, JSON.stringify({ app: 'deutsch-karten', version: 1, exportedAt: new Date().toISOString(), progress: State.progress, daily: State.daily }, null, 1), 'application/json');
+  },
+  async importProgress(file) {
+    try {
+      const data = JSON.parse(await file.text());
+      if (!data || typeof data.progress !== 'object' || data.progress === null) throw new Error('Not a valid progress file.');
+      const prog = {}; let n = 0;
+      for (const [id, p] of Object.entries(data.progress)) {
+        if (!p || typeof p !== 'object') continue;
+        const b = Scheduler.blank(), num = (v, d) => Number.isFinite(Number(v)) ? Number(v) : d;
+        prog[id] = { ease: num(p.ease, b.ease), interval: num(p.interval, 0), repetitions: num(p.repetitions, 0), dueDate: typeof p.dueDate === 'string' ? p.dueDate : null, lapses: num(p.lapses, 0), lastReviewed: typeof p.lastReviewed === 'string' ? p.lastReviewed : null };
+        n++;
+      }
+      if (!confirm(`Import progress for ${n} cards? This replaces your current progress.`)) return;
+      State.progress = prog; if (data.daily && typeof data.daily === 'object') State.daily = data.daily;
+      Progress.save(); toast(`Progress imported (${n} cards).`); UI.setView(State.view);
+    } catch (e) { toast('Progress import failed: ' + e.message); }
+  },
+  resetProgress() {
+    if (!confirm('Reset ALL learning progress and statistics? This cannot be undone (export a backup first!).')) return;
+    State.progress = {}; State.daily = {}; Progress.save(); State.session = null; State.screen = 'start'; toast('Progress reset.'); UI.setView(State.view);
+  },
+  exportLeechesCsv() {
+    const today = todayStr(), rows = [[...COLUMNS, 'Status', 'Lapses', 'Interval_days', 'Ease', 'DueDate']];
+    State.cards.forEach(c => {
+      const p = Progress.get(c.id); if (!p || !p.lastReviewed) return;
+      const leech = p.lapses >= 4, due = Progress.isDue(c.id, today); if (!leech && !due) return;
+      rows.push([c.id, c.deck, c.type, c.article, c.german, c.english, c.hungarian, c.exampleDe, c.exampleEn, c.tags.join(', '), c.source,
+        [leech ? 'Leech' : '', due ? 'Due' : ''].filter(Boolean).join('+'), p.lapses, p.interval, p.ease.toFixed(2), p.dueDate]);
+    });
+    if (rows.length === 1) { toast('No leeches or due cards right now.'); return; }
+    download(`leeches-and-due-${today}.csv`, Csv.stringify(rows, State.settings.csvDelim || ';'), 'text/csv;charset=utf-8');
+  },
+  template() {
+    const rows = [COLUMNS, ...DEMO_CARDS.map(c => [c.id, c.deck, c.type, c.article, c.german, c.english, c.hungarian, c.exampleDe, c.exampleEn, c.tags.join(', '), c.source])];
+    download('deutsch-karten-template.csv', Csv.stringify(rows, State.settings.csvDelim || ';'), 'text/csv;charset=utf-8');
+  }
+};
+
+/* ----- Event wiring ----- */
+document.addEventListener('click', e => {
+  const say = e.target.closest('[data-say]'); if (say) { TTS.speak(say.dataset.say); return; }
+  const art = e.target.closest('[data-art]'); if (art) { Study.answerArticle(art.dataset.art); return; }
+  const rate = e.target.closest('[data-rate]'); if (rate) { Study.rate(Number(rate.dataset.rate)); return; }
+  const cardRow = e.target.closest('[data-card]'); if (cardRow) { UI.showCardDetail(cardRow.dataset.card); return; }
+  if (e.target.id === 'modal') { UI.closeModal(); return; }
+  const a = e.target.closest('[data-act]'); if (!a) return;
+  const x = State.settings.excl;
+  switch (a.dataset.act) {
+    case 'start': Study.start(); break;
+    case 'show': Study.showAnswer(); break;
+    case 'end': Study.endSession(); break;
+    case 'home': State.session = null; Study.renderStart(); break;
+    case 'sel-all': x.decks = []; Settings.save(); Study.renderStart(); break;
+    case 'sel-none': x.decks = uniqSorted(State.cards.map(deckName)); Settings.save(); Study.renderStart(); break;
+    case 'pick-deck': $('#fileDeck').click(); break;
+    case 'imp-progress': $('#fileProgress').click(); break;
+    case 'exp-progress': IO.exportProgress(); break;
+    case 'reset-progress': IO.resetProgress(); break;
+    case 'exp-csv': IO.exportLeechesCsv(); break;
+    case 'template': IO.template(); break;
+    case 'close-modal': UI.closeModal(); break;
+    case 'reset-card': if (confirm('Reset progress of this card?')) { delete State.progress[a.dataset.id]; Progress.save(); UI.closeModal(); toast('Card reset.'); UI.setView(State.view); } break;
+    case 'clear-deck': if (confirm('Remove the loaded deck and return to the demo cards? Progress for removed cards is deleted.')) {
+      State.cards.forEach(c => delete State.progress[c.id]); Store.remove('cards'); Progress.save(); Deck.load(); State.lastImport = null; State.session = null; State.screen = 'start'; UI.setView(State.view); } break;
+  }
+});
+document.addEventListener('change', e => {
+  const t = e.target, S = State.settings;
+  if (t.dataset.f) {                                                         // filter checkbox
+    const list = S.excl[t.dataset.f], v = t.dataset.v, i = list.indexOf(v);
+    if (t.checked && i >= 0) list.splice(i, 1); if (!t.checked && i < 0) list.push(v);
+    Settings.save(); Study.renderStart();
+  } else if (t.name === 'mode') { S.mode = t.value; Settings.save(); Study.renderStart(); }
+  else if (t.dataset.s) {                                                     // settings control
+    const k = t.dataset.s;
+    if (t.type === 'checkbox') S[k] = t.checked; else if (t.type === 'number') S[k] = Math.max(0, parseInt(t.value, 10) || 0); else S[k] = t.value;
+    Settings.save(); if (State.view === 'study') Study.renderStart();
+  }
+});
+document.addEventListener('input', e => {
+  if (e.target.dataset.s === 'speed') { State.settings.speed = Number(e.target.value); $('#speedVal').textContent = Number(e.target.value).toFixed(2) + '×'; Settings.save(); }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') UI.closeModal();
+  if (e.target.id === 'typeInput' && e.key === 'Enter') { e.preventDefault(); Study.checkTyping(); return; }
+  const s = State.session;
+  if (State.view !== 'study' || State.screen !== 'session' || !s || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+  if (!$('#modal').classList.contains('hidden')) return;
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  const k = e.key;
+  if (s.phase === 'front') {
+    if (s.mode === 'article' && ['1', '2', '3'].includes(k)) { e.preventDefault(); Study.answerArticle(['der', 'die', 'das'][k - 1]); }
+    else if (k === ' ' || k === 'Enter') { e.preventDefault(); if (s.mode === 'typing') { const i = $('#typeInput'); if (i) i.focus(); } else Study.showAnswer(); }
+  } else if (s.phase === 'back') {
+    if (['1', '2', '3', '4'].includes(k)) { e.preventDefault(); Study.rate(Number(k)); }
+    else if ((k === ' ' || k === 'Enter') && Date.now() > s.lock) { e.preventDefault(); Study.rate(s.result && !s.result.correct ? 1 : 3); }
+  }
+});
+$('#nav').addEventListener('click', e => { const b = e.target.closest('button'); if (b) UI.setView(b.dataset.view); });
+$('#themeBtn').addEventListener('click', () => { State.settings.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; Settings.save(); UI.applyTheme(); });
+$('#fileDeck').addEventListener('change', e => { if (e.target.files[0]) IO.importDeck(e.target.files[0]); e.target.value = ''; });
+$('#fileProgress').addEventListener('change', e => { if (e.target.files[0]) IO.importProgress(e.target.files[0]); e.target.value = ''; });
+
+/* drag & drop anywhere on the page */
+let dragDepth = 0;
+const hasFiles = e => e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files');
+window.addEventListener('dragenter', e => { if (hasFiles(e)) { dragDepth++; $('#dropOverlay').classList.add('show'); } });
+window.addEventListener('dragleave', e => { if (hasFiles(e) && --dragDepth <= 0) { dragDepth = 0; $('#dropOverlay').classList.remove('show'); } });
+window.addEventListener('dragover', e => { if (hasFiles(e)) e.preventDefault(); });
+window.addEventListener('drop', e => {
+  if (!hasFiles(e)) return; e.preventDefault(); dragDepth = 0; $('#dropOverlay').classList.remove('show');
+  const f = e.dataTransfer.files[0]; if (f) IO.importDeck(f);
+});
+window.addEventListener('error', e => toast('Unexpected error: ' + (e.message || 'see console')));
+
+/* =====================================================================
+   10. BOOT
+   ===================================================================== */
+(function boot() {
+  Settings.load(); Deck.load(); Progress.load(); TTS.init(); UI.applyTheme();
+  if (typeof XLSX === 'undefined') $('#banner').innerHTML = '<div class="warn">⚠ The Excel library (SheetJS) could not be loaded from cdn.jsdelivr.net. You can still import <b>.csv</b> files (save your “Cards” sheet as CSV).</div>';
+  UI.setView('study');
+})();
+</script>
+</body>
+</html>
